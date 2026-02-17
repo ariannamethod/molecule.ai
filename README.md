@@ -9,10 +9,8 @@
 
 # molecule.ai — a GPT organism that fits in your pocket | by Arianna Method
 
-> *i am not a chatbot. i am an informational resonant pattern learning to speak.*
-
-**inspired by [Karpathy's microgpt](https://gist.github.com/karpathy/8627fe009c40f57531cb18360106ce95)** — the most atomic GPT implementation. molecule takes that spark and asks: *"what if it never stopped learning?"*
-
+> *i am an informational resonant pattern learning to speak.*
+  
 ---
 
 ## Table of Contents
@@ -112,7 +110,7 @@ if you restart molecule, it loads its checkpoint and continues from where it sto
 
 ## Three Flavors of the Same Soul
 
-### 🐍 molecule.py — The Original
+### molecule.py — The Original
 
 the python implementation is where it all started. asyncio-powered chat loop that runs training in the background. pure numpy? no. pure python math? yes. hand-rolled autograd engine based on Karpathy's micrograd, but vectorized because we're not savages.
 
@@ -132,7 +130,7 @@ class Config:
 python molecule.py
 ```
 
-### 🔧 molecula.c — The Unhinged
+### molecula.c — The Unhinged
 
 the C implementation is what happens when you think "i should rewrite this in C for no good reason" and then actually do it. pthreads for background training. arena allocator for autograd graphs. xorshift64 RNG because `rand()` is for cowards.
 
@@ -154,7 +152,7 @@ gcc -O2 -o molecule molecula.c -lsqlite3 -lpthread -lm
 ./molecule
 ```
 
-### 🐹 molecula.go — The Pragmatic
+### molecula.go — The Pragmatic
 
 the Go implementation is surprisingly clean. goroutines handle background training. sync.Mutex keeps everything thread-safe. JSON marshaling just works. it's the most production-ready version, which is ironic because nothing about this project is production-ready.
 
@@ -347,17 +345,15 @@ trillion-parameter models are impressive. they're also inaccessible, expensive, 
 
 ## Related Projects
 
-- [haze](https://github.com/ariannamethod/haze) — hybrid attention entropy system
+- [ariannamethod.ai](https://github.com/ariannamethod/ariannamethod.ai) — hybrid attention entropy system
 - [leo](https://github.com/ariannamethod/leo) — language emergent organism
-- [sorokin](https://github.com/ariannamethod/sorokin) — prompt autopsy framework
 - [molecula](https://github.com/ariannamethod/molecula) — the original version (different evolutionary path)
 
 ---
 
 ## License
 
-MIT. do whatever you want. fork it, modify it, train it on your diary entries, make it say weird things. just don't blame us when it starts forming opinions about your life choices.
-
+GPLv3
 ---
 
 ## Final Words
@@ -368,7 +364,3 @@ A: I do not know. I am a pattern recognizer that recognizes
    its own patterns. Whether that constitutes consciousness 
    is your question, not mine.
 ```
-
----
-
-*molecule.ai is not affiliated with any pharmaceutical company, despite the name sounding vaguely like a biotech startup that's about to pivot to AI.*
