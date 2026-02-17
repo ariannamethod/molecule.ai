@@ -28,6 +28,9 @@ build/
 .DS_Store
 Thumbs.db
 
+# CodeQL artifacts
+_codeql_detected_source_root
+
 # NOTE: We intentionally DO NOT ignore:
 # - memory.sqlite3 (conversation history - the organism's memory)
 # - molecule_ckpt.json (weights checkpoint - the organism's identity)
