@@ -149,8 +149,8 @@ class TestVectorValue:
         result = VectorValue.concat([v1, v2, v3])
         assert result.data == [1.0, 2.0, 3.0, 4.0, 5.0]
     
-    def test_backward_addition(self):
-        """Backward pass for addition should propagate gradients through dot product."""
+    def test_backward_via_dot_product(self):
+        """Backward pass should propagate gradients through dot product."""
         v1 = VectorValue([1.0, 2.0])
         v2 = VectorValue([3.0, 4.0])
         # Use dot product which returns a ScalarValue that backward() expects
@@ -210,20 +210,16 @@ class TestScalarValue:
         result = s * 2.0
         assert result.data == 10.0
     
-    def test_scalar_exp(self):
-        """Scalar exp would compute e^x if implemented - test basic arithmetic instead."""
-        # ScalarValue doesn't have exp() method in this implementation
-        # Test basic operations instead
+    def test_scalar_arithmetic_composition(self):
+        """Scalar arithmetic composition should work correctly."""
         s1 = ScalarValue(2.0)
         s2 = ScalarValue(3.0)
         result = s1 * s2 + s1
         # 2 * 3 + 2 = 8
         assert result.data == 8.0
     
-    def test_scalar_log(self):
-        """Scalar log would compute natural log if implemented - test subtraction instead."""
-        # ScalarValue doesn't have log() method in this implementation  
-        # Test subtraction instead
+    def test_scalar_subtraction(self):
+        """Scalar subtraction should work correctly."""
         s1 = ScalarValue(10.0)
         s2 = ScalarValue(3.0)
         result = s1 - s2

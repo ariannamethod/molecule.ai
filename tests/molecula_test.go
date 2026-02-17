@@ -539,22 +539,19 @@ func TestTokenizerUnknownChars(t *testing.T) {
 	docs := []string{"abc"}
 	tok := NewSimpleTokenizer(docs)
 	
-	// Encode a character not in vocab
+	// Encode characters not in vocab
 	text := "xyz"
 	ids := tok.Encode(text)
 	
-	// Should use <unk> for unknown characters
+	// All should be <unk> since x, y, z are not in "abc" vocabulary
 	unkID := tok.Stoi["<unk>"]
-	for _, id := range ids {
-		if _, ok := tok.Stoi["x"]; !ok {
-			if id != unkID {
-				// x is not in vocab, should be <unk>
-				// But if x IS in vocab (unlikely with "abc"), this won't trigger
-			}
+	for i, id := range ids {
+		if id != unkID {
+			t.Errorf("Expected ids[%d] = %d (<unk>), got %d", i, unkID, id)
 		}
 	}
 	
-	// At minimum, should produce 3 tokens
+	// Should produce 3 tokens (one per character)
 	if len(ids) != 3 {
 		t.Errorf("Expected 3 tokens, got %d", len(ids))
 	}
